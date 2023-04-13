@@ -68,13 +68,17 @@ const PaginationSSG = ({ data }) => {
 
 export default PaginationSSG;
 
-export const getStaticProps = async () => {
+export const getStaticProps = async ({ params }) => {
 	// const { page } = params;
 
-	const { data } = await axios.get(
-		`https://rickandmortyapi.com/api/character?page=${1}`
-	);
+	const url = 'https://ipapi.co/json/';
 
+	// const { data } = await axios.get(
+	// 	`https://rickandmortyapi.com/api/character?page=${1}`
+	// );
+
+	const { data } = await axios.get(url);
+	console.log(data);
 	// console.log(page);
 	// console.log(data.results);
 
