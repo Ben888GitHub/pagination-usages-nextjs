@@ -9,7 +9,9 @@ const IpTracking = ({ data }) => {
 export default IpTracking;
 
 export const getStaticProps = async () => {
-	const { data } = await axios.get('https://ipapi.co/json/');
+	const { data } = await axios.get(
+		`https://rickandmortyapi.com/api/character?page=${1}`
+	);
 
 	console.log(data);
 

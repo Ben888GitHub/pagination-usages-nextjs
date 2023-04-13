@@ -73,11 +73,11 @@ export const getStaticProps = async ({ params }) => {
 
 	const url = 'https://ipapi.co/json/';
 
-	// const { data } = await axios.get(
-	// 	`https://rickandmortyapi.com/api/character?page=${1}`
-	// );
+	const { data } = await axios.get(
+		`https://rickandmortyapi.com/api/character?page=${1}`
+	);
 
-	const { data } = await axios.get(url);
+	// const { data } = await axios.get(url);
 	console.log(data);
 	// console.log(page);
 	// console.log(data.results);
