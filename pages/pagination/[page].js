@@ -26,11 +26,11 @@ const PaginationSSG = ({ data }) => {
 	return (
 		<div className="justify-center align-center mx-auto text-center mt-12">
 			<p className="text-4xl">Pagination with API</p>
-			<ul className="m-10">
+			{/* <ul className="m-10">
 				{data?.results?.map((post) => (
 					<li key={post.id}>{post.name}</li>
 				))}
-			</ul>
+			</ul> */}
 			{/* <ReactPaginate
 				containerClassName="inline-flex -space-x-px"
 				pageClassName="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white "
@@ -68,15 +68,15 @@ const PaginationSSG = ({ data }) => {
 
 export default PaginationSSG;
 
-export const getStaticProps = async ({ params }) => {
-	const { page } = params;
+export const getStaticProps = async () => {
+	// const { page } = params;
 
 	const { data } = await axios.get(
-		`https://rickandmortyapi.com/api/character?page=${page}`
+		`https://rickandmortyapi.com/api/character?page=${1}`
 	);
 
-	console.log(page);
-	console.log(data.results);
+	// console.log(page);
+	// console.log(data.results);
 
 	return {
 		props: {
@@ -88,9 +88,9 @@ export const getStaticProps = async ({ params }) => {
 	};
 };
 
-export const getStaticPaths = async () => {
-	return {
-		paths: [],
-		fallback: true
-	};
-};
+// export const getStaticPaths = async () => {
+// 	return {
+// 		paths: [],
+// 		fallback: true
+// 	};
+// };
