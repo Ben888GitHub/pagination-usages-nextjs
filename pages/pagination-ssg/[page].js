@@ -1,44 +1,43 @@
-import axios from 'axios';
-import { useRouter } from 'next/router';
+// import Link from 'next/link';
 import ReactPaginate from 'react-paginate';
+import axios from 'axios';
+// import { useRouter } from 'next/router';
 
-const ApiPagination = (props) => {
-	const { pageCount, posts, currentPage } = props;
+const PaginationSSG = ({ data }) => {
+	// const { pageCount, posts, currentPage } = props;
 
-	const router = useRouter();
+	// const router = useRouter();
 
-	// console.log(router);
+	// const paginationHandler = (page) => {
+	// 	const currentPath = router.pathname;
+	// 	let currentQuery = router.query;
 
-	const paginationHandler = (page) => {
-		const currentPath = router.pathname;
-		let currentQuery = router.query;
+	// 	currentQuery.page = page.selected + 1;
+	// 	// console.log(currentQuery.page);
 
-		currentQuery.page = page.selected + 1;
-		console.log(currentQuery.page);
+	// 	router.push({
+	// 		pathname: currentPath,
+	// 		query: currentQuery
+	// 	});
+	// };
 
-		router.push({
-			pathname: currentPath,
-			query: currentQuery
-		});
-	};
-
-	console.log(posts);
+	// data && console.log(data);
 
 	return (
 		<div className="justify-center align-center mx-auto text-center mt-12">
 			<p className="text-4xl">Pagination with API</p>
 			<ul className="m-10">
-				{posts.map((post) => (
+				{data?.results?.map((post) => (
 					<li key={post.id}>{post.name}</li>
 				))}
 			</ul>
-			<ReactPaginate
+			{/* <ReactPaginate
 				containerClassName="inline-flex -space-x-px"
 				pageClassName="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white "
 				activeClassName="px-3 py-2 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
 				onPageChange={(event) => {
 					paginationHandler(event);
-					console.log(event);
+					// console.log(event);
 				}}
 				pageCount={pageCount}
 				breakLabel={
@@ -62,28 +61,36 @@ const ApiPagination = (props) => {
 				pageRangeDisplayed={2} // todo, if it's mobile then 1 otherwise 2
 				marginPagesDisplayed={1}
 				initialPage={currentPage - 1}
-				// onPageActive={(e) => console.log('Hello')}
-			/>
+			/> */}
 		</div>
 	);
 };
 
-export default ApiPagination;
+export default PaginationSSG;
 
-export const getServerSideProps = async ({ query }) => {
-	const page = query?.page || 1;
+export const getStaticProps = async ({ params }) => {
+	const { page } = params;
 
 	const { data } = await axios.get(
 		`https://rickandmortyapi.com/api/character?page=${page}`
 	);
 
+	console.log(page);
 	console.log(data.results);
 
 	return {
 		props: {
-			pageCount: data.info.pages,
-			posts: data.results,
-			currentPage: page
+			// pageCount: pageCount && pageCount,
+			// posts: data?.results,
+			// currentPage: page
+			data
 		}
+	};
+};
+
+export const getStaticPaths = async () => {
+	return {
+		paths: [],
+		fallback: false
 	};
 };
