@@ -88,9 +88,9 @@ export const getStaticProps = async () => {
 	};
 };
 
-// export const getStaticPaths = async () => {
-// 	return {
-// 		paths: [],
-// 		fallback: true
-// 	};
-// };
+export const getStaticPaths = async () => {
+	return {
+		paths: [],
+		fallback: 'blocking'
+	};
+};
