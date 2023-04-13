@@ -3,7 +3,7 @@ import ReactPaginate from 'react-paginate';
 import axios from 'axios';
 // import { useRouter } from 'next/router';
 
-const PaginationSSG = ({ data }) => {
+const PaginationSSG = () => {
 	// const { pageCount, posts, currentPage } = props;
 
 	// const router = useRouter();
@@ -69,16 +69,16 @@ const PaginationSSG = ({ data }) => {
 export default PaginationSSG;
 
 export const getStaticProps = async ({ params }) => {
-	// const { page } = params;
+	const { page } = params;
 
 	const url = 'https://ipapi.co/json/';
 
-	const { data } = await axios.get(
-		`https://rickandmortyapi.com/api/character?page=${1}`
-	);
+	// const { data } = await axios.get(
+	// 	`https://rickandmortyapi.com/api/character?page=${page}`
+	// );
 
 	// const { data } = await axios.get(url);
-	console.log(data);
+	// console.log(data);
 	// console.log(page);
 	// console.log(data.results);
 
@@ -87,7 +87,7 @@ export const getStaticProps = async ({ params }) => {
 			// pageCount: pageCount && pageCount,
 			// posts: data?.results,
 			// currentPage: page
-			data
+			// data
 		}
 	};
 };
