@@ -3,3 +3,7 @@ https://flowbite.com/docs/components/pagination/
 https://dev.to/documatic/building-pagination-in-react-with-react-paginate-4nol
 
 https://vpilip.com/how-build-simple-pagination-in-nextjs/
+
+https://codepen.io/monsieurv/pen/yLoMxYQ
+
+https://tailwindui.com/components/application-ui/navigation/pagination
